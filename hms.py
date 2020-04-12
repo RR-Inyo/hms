@@ -10,12 +10,13 @@ https://opensource.org/licenses/mit-license.php
 # Definition of the hms class
 class hms:
     def __init__(self, t, second = False):
-        # When given a single float or integer value, convert to a sexagesimal list  
+        # When given a single float or integer value as seconds:  
         if (type(t) == float or type(t) == int) and second:
             self.sec = t
+        # When given a single float or integer value as hours, convert to seconds:
         elif (type(t) == float or type(t) == int) and not second:
             self.sec = t * 3600
-        # When given a sexagesimal list, [hour, minute, second], convert a single decimal value
+        # When given a sexagesimal list, [hour, minute, second], convert to seconds
         elif type(t) == list and len(t) == 3:
             # Checking the type and value of the hour, minute, and second elements
             ## Hour
@@ -132,3 +133,6 @@ class hms:
     ## Workaround for MicroPython in NumWorks
     def neg(self):
         return self.__neg__()
+    
+    def Abs(self):
+        return self.__abs__()
