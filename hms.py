@@ -61,7 +61,7 @@ class hms:
         return self.__str__()
 
     def __add__(self, other):
-        # When another is the same hms class instance
+        # When other is the same hms class instance
         if type(other) == hms:
             return hms(self.sec + other.sec, second = True)
         # When given a single float or integer value
@@ -72,10 +72,10 @@ class hms:
             return hms(self.sec + other[0] * 3600 \
                        + other[1] * 60 + other[2], second = True)
         else:
-            raise ValueError('Invalid value to add.')
-            
+            raise ValueError('Invalid value to add to an hms object instance.')
+    
     def __sub__(self, other):
-        # When another is the same hms class instance
+        # When other is the same hms class instance
         if type(other) == hms:
             return hms(self.sec - other.sec, second = True)
         # When given a single float or integer value
@@ -86,8 +86,22 @@ class hms:
             return hms(self.sec - other[0] * 3600 \
                        - other[1] * 60 - other[2], second = True)
         else:
-            raise ValueError('Invalid value to subtract.')
+            raise ValueError('Invalid value to subtract from an hms object instance.')
+    
+    def __mul__(self, other):
+        #When other is a float or integer
+        if type(other) == float or type(other) == int:
+            return hms(self.sec * other, second = True)
+        else:
+            raise ValueError('Invalid value to multiply an hms object instance with.')
             
+    def __div__(self, other):
+        #When other is a float or integer
+        if type(other) == float or type(other) == int:
+            return hms(self.sec / other, second = True)
+        else:
+            raise ValueError('Invalid value to divide an hms object instance by.')
+    
     def __neg__(self):
         return hms(-self.sec, second = True)
     
