@@ -145,6 +145,12 @@ class hms:
             raise ValueError('Invalid value to compare.')
     
     ## Workaround for MicroPython in NumWorks
+    def mul(self, other):
+        return self.__mul__(other):
+        
+    def div(self, other):
+        return self.__truediv(other):
+        
     def neg(self):
         return self.__neg__()
     
